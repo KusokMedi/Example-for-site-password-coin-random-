@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инструменты</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .tool { margin-bottom: 20px; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <h1>Добро пожаловать на мой сайт инструментов!</h1>
+    
+    <div class="tool" id="coinFlip">
+        <h2>Бросок монетки</h2>
+        <button onclick="flipCoin()">Бросить монетку</button>
+        <p id="coinResult"></p>
+    </div>
+    
+    <div class="tool" id="passwordGenerator">
+        <h2>Генератор паролей</h2>
+        <button onclick="generatePassword()">Сгенерировать пароль</button>
+        <p id="passwordResult"></p>
+    </div>
+    
+    <div class="tool" id="randomImage">
+        <h2>Случайная картинка</h2>
+        <button onclick="showRandomImage()">Показать случайную картинку</button>
+        <div id="imageContainer"></div>
+    </div>
+
+    <script>
+        function flipCoin() {
+            const result = Math.random() < 0.5 ? 'Орел' : 'Решка';
+            document.getElementById('coinResult').textContent = result;
+        }
+        
+        function generatePassword() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let password = '';
+            for (let i = 0; i < 10; i++) {
+                password += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            document.getElementById('passwordResult').textContent = password;
+        }
+        
+        function showRandomImage() {
+            const images = [
+                'image1.jpg',
+                'image2.jpg',
+                'image3.jpg'
+            ];
+            const randomImage = images[Math.floor(Math.random() * images.length)];
+            document.getElementById('imageContainer').innerHTML = '<img src="' + randomImage + '" alt="Random Image">';
+        }
+    </script>
+</body>
+</html>
